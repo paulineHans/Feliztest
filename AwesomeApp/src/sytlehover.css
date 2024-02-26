@@ -1,0 +1,166 @@
+html,
+body {
+    margin: 50px;
+    padding: 40px;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background: #0a0609;
+}
+
+.m-1 {
+    margin: 1rem
+}
+.HelleSeite {
+    width: 220px;
+    height: 50px;
+    border: none;
+    outline: none;
+    color: #3407fd;
+    background: #4a03ff;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+}
+.DunkleSeite {
+    width: 220px;
+    height: 50px;
+    border: none;
+    outline: none;
+    color: #fd0808;
+    background: #000000;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+}
+.ToDoApp {
+    width: 220px;
+    height: 50px;
+    border: none;
+    outline: none;
+    color: #f7f6fb;
+    background: #0f0f0f;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+}
+.HelleSeite:before {
+    content: 'blub';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(10px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .5s ease-in-out;
+    border-radius: 10px;
+}
+.DunkleSeite:before {
+    content: 'blub';
+    background: linear-gradient(45deg, #ff0000, #f10202, #f50101, #ff0000, #fd0303, #f00101, #ee0101, #ff0000, #ff0000);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(10px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .5s ease-in-out;
+    border-radius: 10px;
+}
+.ToDoApp:before {
+    content: 'blub';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(10px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .5s ease-in-out;
+    border-radius: 10px;
+}
+.HelleSeite:active {
+    color: #000
+}
+.DunkleSeite:active {
+    color: #000
+}
+.ToDoApp:active {
+    color: #000
+}
+.HelleSeite:active:after {
+    background: transparent;
+}
+.DunkleSeite:active:after {
+    background: transparent;
+}
+.ToDoApp:active:after {
+    background: transparent;
+}
+
+.HelleSeite:hover:before {
+    opacity: 1;
+}
+.DunkleSeite:hover:before {
+    opacity: 1;
+}
+.ToDoApp:hover:before {
+    opacity: 1;
+}
+.HelleSeite:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #111;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+.DunkleSeite:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #111;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+.ToDoApp:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #111;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+}
