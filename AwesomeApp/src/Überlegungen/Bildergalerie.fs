@@ -41,6 +41,28 @@ let main =
         view = view 
     }
 
+// Html Code für ein Hintergrundbild - wahrscheinlich die bessere Option 
+
+open Feliz
+open Feliz.Bulma
+
+let html =
+    Html.html [
+        Html.lang "de"
+        Html.head [
+            Html.meta [ Html.charset "UTF-8" ]
+            Html.meta [ Html.name "viewport"; Html.content "width=device-width, initial-scale=1.0" ]
+            Html.title "Meine Webseite mit Hintergrundbild"
+            Html.link [ Html.rel "stylesheet"; Html.href "style.css" ]
+        ]
+        Html.body [
+            h1 [ Bulma.title ] [ str "Willkommen auf meiner Webseite!" ]
+        ]
+    ]
+
+Program.mkSimple html
+|> Program.runBrowser
+
 
 
 // Code für Bildergalerie 
