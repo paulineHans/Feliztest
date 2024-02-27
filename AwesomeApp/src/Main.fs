@@ -8,7 +8,7 @@ open Fable.Core.JsInterop
 importSideEffects "./sytlehover.css"
 
 let root = ReactDOM.createRoot(document.getElementById "feliz-app")
-root.render (Overview.OverView.Main ())
+root.render (Overview.Overview.Main ())
 
 
 

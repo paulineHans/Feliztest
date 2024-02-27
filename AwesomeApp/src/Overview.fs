@@ -2,7 +2,7 @@ namespace Overview
 open Feliz 
 
 
-type OverView =
+type Overview =
     [<ReactComponent>]
     static member Main() =
         let currentpage, setpage = React.useState (Nav.Types.Page.LandingPage) //Hier muss Deckblatt dann hin 

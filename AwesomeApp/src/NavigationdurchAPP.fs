@@ -9,7 +9,7 @@ module Types =
         |Todo
         member this.toStringReadable () =
             match this with
-            |LandingPage -> "Deckblatt"
+            |LandingPage -> "Start"
             |Counter -> "Counter" 
             |Todo -> "Todo-Liste" //zu einem lesbaren string umwandeln (wird angezeigt auf der website) 
 
@@ -22,7 +22,8 @@ type Navigationsleiste =
             ]
         ]   
     static member Counter(setPage) = 
-            Navigationsleiste.Subpagelink(Types.Page.Counter, setPage)   //verlinkt den richten suppage link mit dem typen
+            Navigationsleiste.Subpagelink(Types.Page.Counter, setPage)
+              //verlinkt den richten suppage link mit dem typen
      
     static member Todo(setPage) =   
         Navigationsleiste.Subpagelink(Types.Page.Todo, setPage)  //verlinkt den richten suppage link mit dem typen

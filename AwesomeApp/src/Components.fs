@@ -43,10 +43,7 @@ type Components =
                     //style.borderBottomColor color.white
                     //style.borderBottomWidth 20
             ]
-            Html.button [
-                prop.text "Hier To-Do App finden du wirst"
-                prop.className "ToDoApp"
-            ]
+            
             Html.button [
                 prop.onClick (fun _ -> setCount(count + 1))
                 prop.text "Dunkle Seite der Macht"
