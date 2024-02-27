@@ -31,10 +31,10 @@ type Navigationsleiste =
                 Bulma.navbarItem.a [ prop.text "Jobs" ]
                 Bulma.navbarItem.a [ prop.text "Contact" ]
                 Bulma.navbarItem.a [ prop.text "About" ]
-            ]
+                ]
+         ]
         ]
     ]
-]
            
     static member Counter(setPage) = 
             Navigationsleiste.Subpagelink(Types.Page.Counter, setPage)
