@@ -1,4 +1,5 @@
-namespace App
+namespace App 
+// Funktioniert why ever nicht.. hab Überlegungen erst in der AwsoemApp gespeichert und dann in anderen Ordner verlegt 
 
 open Feliz
 open Feliz.Router

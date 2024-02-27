@@ -3,6 +3,7 @@
     <TargetFramework>net7.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Bildergalerie.fs" />
     <Compile Include="ToDoListe.fs" />
     <Compile Include="NavigationdurchAPP.fs" />
     <Compile Include="Components.fs" />
