@@ -52,7 +52,7 @@ body {
 }
 .HelleSeite:before {
     content: 'blub';
-    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    background: linear-gradient(45deg, #0d00ff, #0026ff, #5100ff, #0d00ff, #0000ff, #002bff, #5100ff, #4800ff, #3300ff);
     position: absolute;
     top: -2px;
     left:-2px;
