@@ -1,5 +1,6 @@
 namespace Nav
 open Feliz 
+open Feliz.Bulma
 
 module Types = 
     [<RequireQualifiedAccess>]
@@ -15,12 +16,26 @@ module Types =
 
 type Navigationsleiste =
     static member private Subpagelink (targetpage: Types.Page, setPage: Types.Page -> unit) =
-        Html.div [
-            Html.a [
-                prop.text (targetpage.toStringReadable()); 
-                prop.onClick (fun _ -> setPage (targetpage))
+        Bulma.navbar [
+            Bulma.color.isPrimary
+            prop.children [
+        Bulma.navbarBrand.div [
+            Bulma.navbarItem.a [
+                Html.img [ prop.src "https://bulma.io/images/bulma-logo-white.png"; prop.height 28; prop.width 112; ]
             ]
-        ]   
+        ]
+        Bulma.navbarMenu [
+            Bulma.navbarStart.div [
+                Bulma.navbarItem.a [ prop.text "Home" ]
+                Bulma.navbarItem.a [ prop.text "Documentation" ]
+                Bulma.navbarItem.a [ prop.text "Jobs" ]
+                Bulma.navbarItem.a [ prop.text "Contact" ]
+                Bulma.navbarItem.a [ prop.text "About" ]
+            ]
+        ]
+    ]
+]
+           
     static member Counter(setPage) = 
             Navigationsleiste.Subpagelink(Types.Page.Counter, setPage)
               //verlinkt den richten suppage link mit dem typen
