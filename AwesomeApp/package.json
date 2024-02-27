@@ -1,11 +1,12 @@
 {
   "private": true,
   "scripts": {
-    "start": "dotnet tool restore && dotnet fable watch src --runFast vite",
+    "start": "dotnet tool restore && dotnet fable watch src --noCache --runFast vite",
     "build": "dotnet tool restore && dotnet fable src --run vite build",
     "clean": "dotnet fable clean src --yes"
   },
   "dependencies": {
+    "bulma": "^0.9.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },

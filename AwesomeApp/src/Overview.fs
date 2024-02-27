@@ -1,5 +1,6 @@
 namespace Overview 
 open Feliz 
+open Feliz.Bulma
 
 
 type Overview =
@@ -9,14 +10,12 @@ type Overview =
         printfn "%A" currentpage
         Html.div [
             prop.children [
-                Html.nav [
-                    Nav.Navigationsleiste.LandingPage (setpage)
-                    Nav.Navigationsleiste.Todo (setpage)
-                    Nav.Navigationsleiste.Counter (setpage)
-                ]
-                match currentpage with 
-                |Nav.Types.Page.LandingPage -> Deckblatt.Components.landingPage ()
-                |Nav.Types.Page.Counter -> App.Components.Counter ()
-                |Nav. Types.Page.Todo -> Liste.ToDoListe.ToDo ()
+                Nav.Navigationsleiste.Counter (setpage)
+               
+                
+                // match currentpage with 
+                // |Nav.Types.Page.LandingPage -> Deckblatt.Components.landingPage ()
+                // |Nav.Types.Page.Counter -> App.Components.Counter ()
+                // |Nav.Types.Page.Todo -> Liste.ToDoListe.ToDo ()
             ]
         ]

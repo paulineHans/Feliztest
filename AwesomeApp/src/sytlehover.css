@@ -1,13 +1,9 @@
-html,
+@import "../node_modules/bulma/css/bulma.css";
+
 body {
-    margin: 50px;
-    padding: 40px;
-    width: 100%;
+    
+    width: 100vw;
     height: 100vh;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
     background: #0a0609;
     color: white;
 }
