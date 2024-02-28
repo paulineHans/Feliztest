@@ -42,13 +42,13 @@ let main () =
                     return ()
                 }
             ))
-        ] [ Bulma.text "Start" ]
+        ] [ Bulma.text "Start" ] //Startbutton
 
         Html.div [
             prop.style [ Style.marginTop (Rem 1.0) ]
-            Bulma.button [ ] [ Bulma.text "Button 1" ]
+            Bulma.button [ ] [ Bulma.text "ToDoListe" ] 
 
-            Bulma.button [ ] [ Bulma.text "Button 2" ]
+            Bulma.button [ ] [ Bulma.text "Counter" ]
         ]
         |> prop.style [ Style.display Flexbox.Display.none ]
         |> prop.id "hiddenButtons"
