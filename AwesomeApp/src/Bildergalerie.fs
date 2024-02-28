@@ -31,7 +31,7 @@ let view (model:TableData list) dispatch =
     tbody [](List.map (fun data -> 
         tr [] [
             td [] [str data.navbarMenu]
-            td [] [str [string data.Age]]
+            td [] [str [str data.Age]]
             td [] [str data.Country ]
         ]) model)
 let main = 
