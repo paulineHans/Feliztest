@@ -4,42 +4,42 @@ open Feliz
 open Feliz.Bulma
 open Fable.React
 
-module Main 
+module Main =
 
-type TableData = {Name: string; Age: int; Country: string}
-let initialData : TableData list = 
-    [
-        {Name= "Pauline"; Age = 22; Country = "Germany"}
-        {Name= "Annika"; Age = 21; Country = "Germany"}
-    ]
-type Message = 
-    |NoOp 
+    type TableData = {Name: string; Age: int; Country: string}
+    let initialData : TableData list = 
+        [
+            {Name= "Pauline"; Age = 22; Country = "Germany"}
+            {Name= "Annika"; Age = 21; Country = "Germany"}
+        ]
+    type Message = 
+        |NoOp 
 
-let update (msg:Message) (model: TableData list) : TableData list = 
-    match msg with 
-    |NoOp -> modle 
-let view (model:TableData list) dispatch = 
-    table [] [
-            thead [] [
-                tr [] [
-                    th [] [str "Pauline"]
-                    th [] [str 22]
-                    th [] [str "Germany"]
+    let update (msg:Message) (model: TableData list) : TableData list = 
+        match msg with 
+        |NoOp -> model 
+    let view (model:TableData list) dispatch = 
+        new table [] [
+                thead [] [
+                    tr [] [
+                        th [] [str "Pauline"]
+                        th [] [str 22]
+                        th [] [str "Germany"]
+                    ]
                 ]
-            ]
-    ]
-    tbody [](List.map (fun data -> 
-        tr [] [
-            td [] [str data.navbarMenu]
-            td [] [str [str data.Age]]
-            td [] [str data.Country ]
-        ]) model)
-let main = 
-    App.simple {
-        init = initialData
-        update = update
-        view = view 
-    }
+        ]
+        tbody [](List.map (fun data -> 
+            tr [] [
+                td [] [str data.navbarMenu]
+                td [] [str [str data.Age]]
+                td [] [str data.Country ]
+            ]) model)
+    let main = 
+        App.simple {
+            init = initialData
+            update = update
+            view = view 
+        }
 
 // Html Code für ein Hintergrundbild - wahrscheinlich die bessere Option 
 

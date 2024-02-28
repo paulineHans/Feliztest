@@ -3,7 +3,6 @@
     <TargetFramework>net7.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Überlegungen\Starbutton.fs" />
     <Compile Include="Bildergalerie.fs" />
     <Compile Include="ToDoListe.fs" />
     <Compile Include="NavigationdurchAPP.fs" />
