@@ -16,9 +16,9 @@ module Types =
             |Counter -> "Counter" 
             |Todo -> "Todo-Liste" 
 
-//Code für das Aussehen der Navigationsleiste 
+//Code für das Skelett der Navigationsleiste 
     type NavBar  =
-        static member private Subpagelink (setPage: Page -> unit, statepage: Page) = 
+        static member private Subpagelink (setPage: Page -> unit, statepage: Page) = //Navigation zu den Unterseiten
             Bulma.navbar [
                 Bulma.color.isWhite
                 prop.children [
@@ -29,14 +29,15 @@ module Types =
                     ]
                     Bulma.navbarMenu [
                         Bulma.navbarStart.div [
-                            Bulma.navbarItem.a [ prop.text "Home" ]
-                            Bulma.navbarItem.a [ prop.text "Documentation" ]
-                            Bulma.navbarItem.a [ prop.text "Jobs" ]
-                            Bulma.navbarItem.a [ prop.text "Contact" ]
-                            Bulma.navbarItem.a [ prop.text "About" ]
+                            Bulma.navbarItem.a [
+                                 prop.text "Start"]
+                                // prop.onClick (fun _ -> setPage ())] Hier muss die verlinkte Seite hin 
+                            Bulma.navbarItem.a [ prop.text "Counter" ]
+                            Bulma.navbarItem.a [ prop.text "To-Do-Liste" ]
+                            //Bulma.navbarItem.a [ prop.text "Contact" ]
+                            //Bulma.navbarItem.a [ prop.text "About" ]
                         ]
                     ]
                 ]
             ]
-    
-
+            
