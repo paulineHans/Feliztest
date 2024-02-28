@@ -1,23 +1,10 @@
-namespace Nav
+namespace Components
 open Feliz 
 open Feliz.Bulma
 
-module Types = 
-    [<RequireQualifiedAccess>]
-    type Page =     //type Page repräsentiert verschiedene Fallalternativen 
-        |LandingPage
-        |Counter
-        |Todo
-    
-    // member this.toStrinReadable wandelt alles in einen String um, sodass es Lesbar wird auf Website 
-        member this.toStringReadable () = 
-            match this with
-            |LandingPage -> "Start"
-            |Counter -> "Counter" 
-            |Todo -> "Todo-Liste" 
 open Types
 //Code für das Skelett der Navigationsleiste 
-type NavBar  =
+type NavBar =
     static member Main (setPage: Page -> unit, statepage: Page) = //Navigation zu den Unterseiten
         Bulma.navbar [
             Bulma.color.isWhite

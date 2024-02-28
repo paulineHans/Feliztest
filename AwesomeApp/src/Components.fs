@@ -1,4 +1,4 @@
-namespace App 
+namespace Components 
 // Funktioniert why ever nicht.. hab Überlegungen erst in der AwsoemApp gespeichert und dann in anderen Ordner verlegt 
 
 open Feliz

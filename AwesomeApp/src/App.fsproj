@@ -3,15 +3,12 @@
     <TargetFramework>net7.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Bildergalerie.fs" />
-    <Compile Include="ToDoListe.fs" />
-    <Compile Include="NavigationdurchAPP.fs" />
-    <Compile Include="Components.fs" />
-    <Compile Include="Deckblatt.fs" />
+    <Compile Include="Types.fs" />
     <None Include="index.html" />
-    <Compile Include="Overview.fs" />
+    <Compile Include="Component.Navbar.fs" />
+    <Compile Include="Components.fs" />
+    <Compile Include="View.fs" />
     <Compile Include="Main.fs" />
-    <Compile Include="Extensions.fs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Feliz" Version="2.6.0" />

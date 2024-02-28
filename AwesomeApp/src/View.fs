@@ -1,16 +1,18 @@
-namespace Overview 
+namespace App 
 open Feliz 
 open Feliz.Bulma
 
-open Nav.Types
-type Overview =
+
+open Types
+
+type View =
     [<ReactComponent>]
     static member Main() =
         let currentpage, setpage = React.useState (Page.LandingPage) //Hier muss Deckblatt dann hin 
         printfn "%A" currentpage
         Html.div [
             prop.children [
-                Nav.NavBar.Main (setpage, currentpage)
+                Components.NavBar.Main (setpage, currentpage)
                 if currentpage = Page.LandingPage then 
                     Html.div "Hello"
                 else 
