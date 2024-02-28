@@ -10,7 +10,7 @@ type Overview =
         printfn "%A" currentpage
         Html.div [
             prop.children [
-                Nav.Types.NavBar. (setpage)
+                
                
                 
                 // match currentpage with 

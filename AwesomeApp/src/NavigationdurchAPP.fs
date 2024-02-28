@@ -40,4 +40,6 @@ module Types =
                     ]
                 ]
             ]
-            
+        static member Allofit (setPage, currentpage) = 
+            NavBar.Subpagelink (setPage, currentpage)
+        // SetPage ist für den Übergang zwischen Pages verantwortlich und currentPage zeigt die aktuelle Seite an. Übergang soll einfach werden
