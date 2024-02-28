@@ -24,7 +24,7 @@ module Types =
                 prop.children [
                     Bulma.navbarBrand.div [
                         Bulma.navbarItem.a [
-                            Html.img [ prop.src "https://bulma.io/images/bulma-logo-white.png"; prop.height 28; prop.width 112; ]
+                            Html.img [ prop.src "https://bulma.io/images/bulma-logo-black.png"; prop.height 28; prop.width 112; ]
                         ]
                     ]
                     Bulma.navbarMenu [
