@@ -4,14 +4,15 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Überlegungen\Starbutton.fs" />
+    <Compile Include="Starbutton.fs" />
     <Compile Include="Bildergalerie.fs" />
     <Compile Include="ToDoListe.fs" />
     <Compile Include="NavigationdurchAPP.fs" />
     <Compile Include="Components.fs" />
     <Compile Include="Deckblatt.fs" />
     <None Include="index.html" />
-    <Compile Include="overview.fs" />
     <Compile Include="Main.fs" />
+    <Compile Include="overview.fs" />
     <Compile Include="Extensions.fs" />
   </ItemGroup>
   <ItemGroup>
