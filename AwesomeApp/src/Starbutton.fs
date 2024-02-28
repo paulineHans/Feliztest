@@ -4,23 +4,24 @@ namespace Startbutton
 open Feliz
 open Feliz.Router
 
- static member StartButton() =
+type blub =
+    static member StartButton() =
         let (count, setCount) = React.useState(0)
         Help.log count
         Html.div [
-            Html.h1 [
-                prop.text 
+        Html.h1 [
+            prop.text 
 
-                prop.style [
-                    style.textAlign.center
-                    style.color.gray
-                ]
+            prop.style [
+                style.textAlign.center
+                style.color.gray
             ]
         ]
-         Html.button [
-            prop.text "Start"
-            prop.className "Startbutttonn" //Name der in Css Datei muss um hover effect etc. zu erstellen
-        ]
+    ]
+        Html.button [
+        prop.text "Start"
+        prop.className "Startbutttonn" //Name der in Css Datei muss um hover effect etc. zu erstellen
+    ]
 
 
 // von ChatGpt Code der den Startbutton enthält und wenn man auf ihn klickt dieser verschwindet und zwei neue buttons erscheinen
