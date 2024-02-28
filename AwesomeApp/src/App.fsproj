@@ -11,8 +11,8 @@
     <Compile Include="Components.fs" />
     <Compile Include="Deckblatt.fs" />
     <None Include="index.html" />
-    <Compile Include="Main.fs" />
     <Compile Include="overview.fs" />
+    <Compile Include="Main.fs" />
     <Compile Include="Extensions.fs" />
   </ItemGroup>
   <ItemGroup>
