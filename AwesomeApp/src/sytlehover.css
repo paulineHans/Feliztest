@@ -1,23 +1,13 @@
 @import "../node_modules/bulma/css/bulma.css";
 
-body {
-    
-    width: 100vw;
-    height: 100vh;
-    background: #070707;
-    color: rgb(250, 246, 246);
-}
 
-* .m-1 {
-    margin: 1rem
-}
 
-.Highligtheffekt {
+.Highligtheffektt {
     background-color: #ff7300;
     border: #111;
 }
 
-.Highligtheffekt:hover {
+.Highligtheffektt:hover {
     color: #00ffd5;
     background-color: #ff00c8;
     border:#fd0303 ;
@@ -33,7 +23,7 @@ body {
     border:cadetblue; 
 }
 
-.Highligtheffekt:hover + .HighligtheffektwegA {
+.Highligtheffektt:hover + .HighligtheffektwegA {
     display: contents;
 }
 
@@ -54,6 +44,30 @@ body {
 }
 
 
+
+body {
+    
+    width: 100vw;
+    height: 100vh;
+    background: #070707;
+    color: rgb(250, 246, 246);
+}
+
+* .m-1 {
+    margin: 1rem
+}
+
+.Highligtheffekt {
+    background-color: darkslateblue;
+    color: #000;
+    border: 5px solid #0e4d0c; 
+    text-align: center; 
+    font-size: 16px;
+    transition: 0.4s;
+    display: block;
+    margin: 40px; 
+    width: 200px;   
+}
 
 .Startseite {
     width: 220px;
