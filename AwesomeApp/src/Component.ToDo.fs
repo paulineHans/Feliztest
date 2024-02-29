@@ -29,11 +29,18 @@ module Bestandteile = //Recordtype mit zwei Boxen
                         Bulma.input.text [
                             //prop.className "input is priary" Hover Button 
                             prop.placeholder "Aufgaben die erledigen du musst kommen rein hier"
+                            prop.style [
+                                style.width 700
+                                style.margin 32
+                            ]
                         ]
                     ] 
                     Bulma.control.div [
                         Bulma.input.checkbox [
                             prop.placeholder "Erledigt"
+                            prop.style[
+                                style.width 100  
+                            ]
                         ]
                     ]
             ]
