@@ -14,6 +14,8 @@ module Bestandteile = //Recordtype mit zwei Boxen
         static member ToDoListe () = 
             let Recordtypeliste = [
                  {Aufgaben =  "Kapitel 1-5 lesen"; Erledigt = "Nur bis Kapitel 4"}
+                 {Aufgaben =  "Kapitel 1-5 lesen"; Erledigt = "Nur bis Kapitel 4"}
+                 
             ]
             let (table: Komponenten list), addtableslot = React.useState (Recordtypeliste)
             Html.div [
@@ -43,6 +45,26 @@ module Bestandteile = //Recordtype mit zwei Boxen
                             ]
                         ]
                     ]
-            ]
+                    Bulma.table [ 
+                        Html.thead [
+                            Html.tr [
+                                Html.th "Aufgaben"
+                                Html.th "Erledigt"
+                            ]
+                        ]
+                        Html.tbody [
+                            for element in table do 
+                                Html.tr [
+                                    Html.td [
+                                        Html.div element.Aufgaben
+                                        Html.div element.Erledigt]
+                                ]
+                        ]
+                    ]
+                        ]
+                    
+            
+
+
          
           
