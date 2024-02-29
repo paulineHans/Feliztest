@@ -73,7 +73,7 @@ module Bestandteile = //Recordtype mit zwei Boxen
                                     Bulma.button.button [
                                         Bulma.delete [
                                             prop.onClick (fun _ -> (
-                                                {Aufgaben = "duschen"; Erledigt = "ja"} :: table |> settable
+                                                {Aufgaben = ""; Erledigt = ""} :: table |> settable 
                                        ))
                                     ]
                                      ]
