@@ -17,12 +17,14 @@ type NavBar =
                 Bulma.navbarMenu [
                     Bulma.navbarStart.div [
                         Bulma.navbarItem.a [
-                                prop.text "Start"]
-                            // prop.onClick (fun _ -> setPage ())] Hier muss die verlinkte Seite hin 
-                        Bulma.navbarItem.a [ prop.text "Counter" ]
-                        Bulma.navbarItem.a [ prop.text "To-Do-Liste" ]
-                        //Bulma.navbarItem.a [ prop.text "Contact" ]
-                        //Bulma.navbarItem.a [ prop.text "About" ]
+                            prop.text "Start"
+                            prop.onClick (fun _ -> setPage Page.LandingPage)]  
+                        Bulma.navbarItem.a [
+                            prop.text "Counter" 
+                            prop.onClick (fun _ -> setPage Page.Counter)]
+                        Bulma.navbarItem.a [ 
+                            prop.text "To-Do-Liste" 
+                            prop.onClick (fun _ -> setPage Page.Todo)]
                     ]
                 ]
             ]

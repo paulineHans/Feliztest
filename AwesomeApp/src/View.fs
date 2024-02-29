@@ -13,12 +13,11 @@ type View =
         Html.div [
             prop.children [
                 Components.NavBar.Main (setpage, currentpage)
-                if currentpage = Page.LandingPage then 
-                    Html.div "Hello"
-                else 
-                    Html.div "Plane"
-               // match currentpage with 
-                //|Nav.Types.NavBar.Allofit ->
-                
+                match currentpage with 
+                |Page.Counter -> 
+                    Components.Components.Counter ()
+                |Page.LandingPage -> Html.div "Start"
+                |Page.Todo -> Html.div "To-Do-Liste"
+            
             ]
         ]

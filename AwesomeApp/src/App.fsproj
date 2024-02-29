@@ -3,6 +3,7 @@
     <TargetFramework>net7.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Component.ToDo.fs" />
     <Compile Include="Types.fs" />
     <None Include="index.html" />
     <Compile Include="Component.Navbar.fs" />
