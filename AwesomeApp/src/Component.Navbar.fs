@@ -24,7 +24,9 @@ type NavBar =
                             prop.onClick (fun _ -> setPage Page.Counter)]
                         Bulma.navbarItem.a [ 
                             prop.text "To-Do-Liste" 
-                            prop.onClick (fun _ -> setPage Page.Todo)]
+                            prop.onClick (fun _ -> setPage Page.Todo)
+                            if Components.Bestandteile.Komponenten = statepage then 
+                                prop.className "Highligtheffekt"]
                     ]
                 ]
             ]

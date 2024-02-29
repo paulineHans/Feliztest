@@ -12,6 +12,49 @@ body {
     margin: 1rem
 }
 
+.Highligtheffekt {
+    background-color: #ff7300;
+    border: #111;
+}
+
+.Highligtheffekt:hover {
+    color: #00ffd5;
+    background-color: #ff00c8;
+    border:#fd0303 ;
+}
+
+.Highligtheffektab {
+    border: #fffb00;
+}
+
+.Highligtheffektab:hover {
+    color: aquamarine;
+    background-color: blueviolet;
+    border:cadetblue; 
+}
+
+.Highligtheffekt:hover + .HighligtheffektwegA {
+    display: contents;
+}
+
+.Highligtheffektab + .HighligtheffektwegB {
+    display: contents;
+}
+
+.HighligtheffektwegA {
+    display: none;
+}
+
+.HighligtheffektwegB {
+    display: none;
+}
+
+.Übergang {
+    transition: all 0,3s ease 0s;
+}
+
+
+
 .Startseite {
     width: 220px;
     height: 50px;
