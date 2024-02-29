@@ -65,21 +65,19 @@ module Bestandteile = //Recordtype mit zwei Boxen
 
                         ]
                     ]
-                    let (table: Komponenten list), settable = React.useState (Recordtypeliste)
-                    Html.div [
-                        Html.tr [
-                            Html.td [
-                                Bulma.control.div [
-                                    Bulma.button.button [
-                                        Bulma.delete [
-                                            prop.onClick (fun _ -> (
-                                                {Aufgaben = ""; Erledigt = ""} :: table |> settable 
-                                       ))
-                                    ]
-                                     ]
-                                 ]
-                             ]
-
+                    let (table: Komponenten list), settabledelete = React.useState (Recordtypeliste)
+                    Bulma.control.div [
+                        Bulma.button.button [
+                            Bulma.delete [
+                                prop.onClick (fun _ -> (
+                                    { Aufgaben = "jaj"; Erledigt = "sksk" } ::  table |> settabledelete 
+                                ))
+                            ]
+                        ]
                     ]
+                             
                 ]
-            ]
+                
+            
+
+                
