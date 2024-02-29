@@ -17,7 +17,7 @@ module Bestandteile = //Recordtype mit zwei Boxen
                  {Aufgaben =  "HALLO"; Erledigt = "HUHU"}
                  {Aufgaben =  "HIHI"; Erledigt = "HAHA"}   
             ]
-            let (table: Komponenten list), addtableslot = React.useState (Recordtypeliste)
+            let (table: Komponenten list), settable = React.useState (Recordtypeliste)
             Html.div [
                     Bulma.tag [
                         color.isWhite 
@@ -27,6 +27,7 @@ module Bestandteile = //Recordtype mit zwei Boxen
                             style.fontSize 15
                         ]
                     ]
+                   
                     Bulma.table [ 
                         Html.thead [
                             Html.tr [
@@ -58,16 +59,27 @@ module Bestandteile = //Recordtype mit zwei Boxen
                         Bulma.button.button[
                             prop.text "Hinzufügen"
                             prop.style []   
-                            prop.onClick (fun _ -> 
-                                {Aufgaben = "duschen"; Erledigt = "ja" }) 
-                            
+                            prop.onClick (fun _ -> (
+                                {Aufgaben = "duschen"; Erledigt = "ja"} :: table |>settable 
+                            ))
 
                         ]
                     ]
-                        ]
-                    
-            
+                    let (table: Komponenten list), settable = React.useState (Recordtypeliste)
+                    Html.div [
+                        Html.tr [
+                            Html.td [
+                                Bulma.control.div [
+                                    Bulma.button.button [
+                                        Bulma.delete [
+                                            prop.onClick (fun _ -> (
+                                                {Aufgaben = "duschen"; Erledigt = "ja"} :: table |> settable
+                                       ))
+                                    ]
+                                     ]
+                                 ]
+                             ]
 
-
-         
-          
+                    ]
+                ]
+            ]
