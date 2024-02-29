@@ -32,17 +32,17 @@ module Bestandteile = //Recordtype mit zwei Boxen
                             prop.style [
                                 style.width 700
                                 style.margin 32
-                            ]
+                            ] 
                         ]
                     ] 
                     Bulma.control.div [
                         Bulma.input.checkbox [
                             prop.placeholder "Erledigt"
                             prop.style[
-                                style.width 100  
+                                style.width 100   
                             ]
                         ]
                     ]
             ]
-            
+         
           
