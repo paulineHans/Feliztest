@@ -15,8 +15,7 @@ module Bestandteile = //Recordtype mit zwei Boxen
             
             let Recordtypeliste = [
                  {Aufgaben =  "HALLO"; Erledigt = "HUHU"}
-                 {Aufgaben =  "HIHI"; Erledigt = "HAHA"}
-                 
+                 {Aufgaben =  "HIHI"; Erledigt = "HAHA"}   
             ]
             let (table: Komponenten list), addtableslot = React.useState (Recordtypeliste)
             Html.div [
@@ -28,24 +27,6 @@ module Bestandteile = //Recordtype mit zwei Boxen
                             style.fontSize 15
                         ]
                     ]
-                    // Bulma.control.div [
-                    //     Bulma.input.text [
-                    //         //prop.className "input is priary" Hover Button 
-                    //         prop.placeholder "Aufgaben die erledigen du musst kommen rein hier"
-                    //         prop.style [
-                    //             style.width 700
-                    //             style.margin 32
-                    //         ] 
-                    //     ]
-                    // ] 
-                    // Bulma.control.div [
-                    //     Bulma.input.checkbox [
-                    //         prop.placeholder "Erledigt"
-                    //         prop.style[
-                    //             style.width 100   
-                    //         ]
-                    //     ]
-                    // ]
                     Bulma.table [ 
                         Html.thead [
                             Html.tr [
@@ -71,6 +52,16 @@ module Bestandteile = //Recordtype mit zwei Boxen
                                         ]
                                     ] 
                                 ]
+                        ]
+                    ]
+                    Html.h1 [
+                        Bulma.button.button[
+                            prop.text "Hinzufügen"
+                            prop.style []   
+                            prop.onClick (fun _ -> 
+                                {Aufgaben = "duschen"; Erledigt = "ja" }) 
+                            
+
                         ]
                     ]
                         ]
