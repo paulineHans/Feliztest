@@ -8,7 +8,7 @@ body {
     color: rgb(250, 246, 246);
 }
 
-/* .m-1 {
+* .m-1 {
     margin: 1rem
 }
 
@@ -210,4 +210,4 @@ body {
     0% { background-position: 0 0; }
     50% { background-position: 400% 0; }
     100% { background-position: 0 0; }
-} */
+} 

@@ -1,5 +1,5 @@
 namespace Components 
-// Funktioniert why ever nicht.. hab Überlegungen erst in der AwsoemApp gespeichert und dann in anderen Ordner verlegt 
+// Code für die Buttons und den kompletten Counter 
 
 open Feliz
 open Feliz.Router
