@@ -7,7 +7,7 @@ open Types
 type NavBar =
     static member Main (setPage: Page -> unit, statepage: Page) = //Navigation zu den Unterseiten
         Bulma.navbar [
-            Bulma.color.isWhite
+            Bulma.color.isDanger
             prop.children [
                 Bulma.navbarBrand.div [
                     Bulma.navbarItem.a [
@@ -17,16 +17,20 @@ type NavBar =
                 Bulma.navbarMenu [
                     Bulma.navbarStart.div [
                         Bulma.navbarItem.a [
-                            prop.text "Start"
+                            prop.text "Hier deine Reise du muss starten"
                             prop.onClick (fun _ -> setPage Page.LandingPage)]  
                         Bulma.navbarItem.a [
                             prop.text "Counter" 
-                            prop.onClick (fun _ -> setPage Page.Counter)]
+                            prop.onClick (fun _ -> setPage Page.Counter)
+                            if Types.Page.Counter = statepage then
+                                prop.className "Highligtheffekt"
+                            else ()]
                         Bulma.navbarItem.a [ 
                             prop.text "To-Do-Liste" 
                             prop.onClick (fun _ -> setPage Page.Todo)
-                            if Components.Bestandteile.Komponenten = statepage then 
-                                prop.className "Highligtheffekt"]
+                            if Types.Page.Todo = statepage then 
+                                prop.className "Highligtheffekt"
+                            else ()]
                     ]
                 ]
             ]

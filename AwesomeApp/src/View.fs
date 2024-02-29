@@ -16,8 +16,8 @@ type View =
                 match currentpage with 
                 |Page.Counter -> 
                     Components.Components.Counter ()
-                |Page.LandingPage -> Html.div "Start"
-                |Page.Todo -> Html.div "To-Do-Liste"
+                |Page.LandingPage -> Html.div "In a galaxy far far away"
+                |Page.Todo -> Components.Bestandteile.ToDo.ToDoListe ()
             
             ]
         ]
