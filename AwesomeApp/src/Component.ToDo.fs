@@ -23,13 +23,12 @@ module Bestandteile = //Recordtype mit zwei Boxen
                 prop.children [
                     Html.button [
                         prop.text "Löschen"
+                        prop.className "Löschenbutton"
                         prop.onClick (fun _ ->
                             let listlength = List.length table
                             let newlist = List.take (listlength - 1) table |> settable
                             newlist)
                     ]
-                    
-            
                     Bulma.table [ 
                         Html.thead [
                             Html.tr [

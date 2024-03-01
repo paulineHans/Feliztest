@@ -7,12 +7,9 @@ open Types
 type NavBar =
     static member Main (setPage: Page -> unit, statepage: Page) = //Navigation zu den Unterseiten
         Bulma.navbar [
-            Bulma.color.isDanger
+            Bulma.color.isBlack
             prop.children [
                 Bulma.navbarBrand.div [
-                    Bulma.navbarItem.a [
-                        Html.img [ prop.src "https://bulma.io/images/bulma-logo-white.png"; prop.height 28; prop.width 112; ]
-                    ]
                 ]
                 Bulma.navbarMenu [
                     Bulma.navbarStart.div [
