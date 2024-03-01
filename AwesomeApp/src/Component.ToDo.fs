@@ -65,12 +65,14 @@ module Bestandteile = //Recordtype mit zwei Boxen
 
                         ]
                     ]
-                    let (table: Komponenten list), settabledelete = React.useState (Recordtypeliste)
+                    let (table: Komponenten list), setdelete = React.useState (Recordtypeliste)
                     Bulma.control.div [
                         Bulma.button.button [
                             Bulma.delete [
                                 prop.onClick (fun _ -> (
-                                    { Aufgaben = "jaj"; Erledigt = "sksk" } ::  table |> settabledelete 
+                                    let elementtodelete = { Aufgaben = "jaj"; Erledigt = "sksk" }
+                                    let aktualisierung = table |> List.filter ( fun element -> element <> elementtodelete)
+                                    aktualisierung |> settable
                                 ))
                             ]
                         ]
