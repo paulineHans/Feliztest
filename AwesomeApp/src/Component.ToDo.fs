@@ -63,11 +63,8 @@ module Bestandteile = //Recordtype mit zwei Boxen
                             prop.onClick (fun _ -> (
                                 {Aufgaben = "duschen"; Erledigt = "ja"} :: table |>settable 
                             ))
-
                         ]
-                    ]
-                    
-                                
+                    ]                               
                 ]
             ]
             
