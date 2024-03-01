@@ -19,15 +19,13 @@ module Bestandteile = //Recordtype mit zwei Boxen
             ]
             let (table: Komponenten list), settable = React.useState (Recordtypeliste)
             Html.div [
-                    Bulma.tag [
-                        color.isWhite 
-                        prop.text "Liste-To-Do"
-                        prop.style [
-                            style.margin (length.rem 2)
-                            style.fontSize 15
-                        ]
+                    Html.button [
+                        prop.text "Löschen"
+                        prop.onClick (fun _ ->
+                            let listlength = List.length table
+                            let newlist = List.take (listlength - 1) table |> settable
+                            newlist)
                     ]
-                   
                     Bulma.table [ 
                         Html.thead [
                             Html.tr [
@@ -41,14 +39,14 @@ module Bestandteile = //Recordtype mit zwei Boxen
                                     Html.td [
                                         Bulma.control.div[
                                             Bulma.input.text [
-                                                prop.placeholder "Aufgabe hinzufügen du musst hier"
+                                                prop.placeholder "Aufgabe hinzufügen"
                                             ]
                                         ]
                                     ]
                                     Html.td [
                                         Bulma.control.div [
                                             Bulma.input.checkbox [
-                                                prop.placeholder "Erledigt deine Aufgabe sein?"
+                                                prop.placeholder "Erledigt?"
                                             ]
                                         ]
                                     ] 
@@ -65,20 +63,13 @@ module Bestandteile = //Recordtype mit zwei Boxen
 
                         ]
                     ]
-                    let (table: Komponenten list), setdelete = React.useState (Recordtypeliste)
-                    Bulma.control.div [
-                        Bulma.button.button [
-                            Bulma.delete [
-                                prop.onClick (fun _ -> (
-                                    let elementtodelete = { Aufgaben = "jaj"; Erledigt = "sksk" }
-                                    let aktualisierung = table |> List.filter ( fun element -> element <> elementtodelete)
-                                    aktualisierung |> settable
-                                ))
-                            ]
-                        ]
-                    ]
-                             
+                    
+                                
                 ]
+                        
+                    
+                             
+                
                 
             
 
