@@ -28,6 +28,9 @@ module Bestandteile = //Recordtype mit zwei Boxen
                             let listlength = List.length table
                             let newlist = List.take (listlength - 1) table |> settable
                             newlist)
+                        prop.style [
+                            style.width (length.rem 5)
+                        ]
                     ]
                     Bulma.table [ 
                         Html.thead [
