@@ -20,6 +20,7 @@ module Bestandteile = //Recordtype mit zwei Boxen
             let (table: Komponenten list), settable = React.useState (Recordtypeliste)
             Html.div [
                     Html.button [
+                        prop.className "container"
                         prop.text "Löschen"
                         prop.onClick (fun _ ->
                             let listlength = List.length table
