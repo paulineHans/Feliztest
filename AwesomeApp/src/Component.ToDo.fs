@@ -19,14 +19,17 @@ module Bestandteile = //Recordtype mit zwei Boxen
             ]
             let (table: Komponenten list), settable = React.useState (Recordtypeliste)
             Html.div [
+                prop.className "space-children"
+                prop.children [
                     Html.button [
-                        prop.className "container"
                         prop.text "Löschen"
                         prop.onClick (fun _ ->
                             let listlength = List.length table
                             let newlist = List.take (listlength - 1) table |> settable
                             newlist)
                     ]
+                    
+            
                     Bulma.table [ 
                         Html.thead [
                             Html.tr [
@@ -67,8 +70,11 @@ module Bestandteile = //Recordtype mit zwei Boxen
                     
                                 
                 ]
-                        
-                    
+            ]
+            
+        
+
+    
                              
                 
                 
