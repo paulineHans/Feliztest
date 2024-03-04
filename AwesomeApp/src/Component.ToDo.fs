@@ -21,55 +21,52 @@ module Bestandteile = //Recordtype mit zwei Boxen
             Html.div [
                 prop.className "space-children"
                 prop.children [
-                    Html.button [
-                        prop.text "Löschen"
-                        prop.className "Löschenbutton"
-                        prop.onClick (fun _ ->
-                            let listlength = List.length table
-                            let newlist = List.take (listlength - 1) table |> settable
-                            newlist)
-                        prop.style [
-                            style.width (length.rem 5)
+                Html.button [
+                    prop.text "Löschen"
+                    prop.className "Löschenbutton"
+                    prop.onClick (fun _ ->
+                        let listlength = List.length table
+                        let newlist = List.take (listlength - 1) table |> settable
+                        newlist)
+                ]
+                Bulma.table [ 
+                    Html.thead [
+                        Html.tr [
+                            Html.th "Aufgaben"
+                            Html.th "Erledigt"
                         ]
                     ]
-                    Bulma.table [ 
-                        Html.thead [
+                    Html.tbody [
+                        for element in table do 
                             Html.tr [
-                                Html.th "Aufgaben"
-                                Html.th "Erledigt"
-                            ]
-                        ]
-                        Html.tbody [
-                            for element in table do 
-                                Html.tr [
-                                    Html.td [
-                                        Bulma.control.div[
-                                            Bulma.input.text [
-                                                prop.placeholder "Aufgabe hinzufügen"
-                                            ]
+                                Html.td [
+                                    Bulma.control.div[
+                                        Bulma.input.text [
+                                            prop.placeholder "Aufgabe hinzufügen"
                                         ]
                                     ]
-                                    Html.td [
-                                        Bulma.control.div [
-                                            Bulma.input.checkbox [
-                                                prop.placeholder "Erledigt?"
-                                            ]
-                                        ]
-                                    ] 
                                 ]
-                        ]
+                                Html.td [
+                                    Bulma.control.div [
+                                        Bulma.input.checkbox [
+                                            prop.placeholder "Erledigt?"
+                                        ]
+                                    ]
+                                ] 
+                            ]
                     ]
-                    Html.h1 [
-                        Bulma.button.button[
-                            prop.text "Hinzufügen"
-                            prop.style []   
-                            prop.onClick (fun _ -> (
-                                {Aufgaben = "duschen"; Erledigt = "ja"} :: table |>settable 
-                            ))
-                        ]
-                    ]                               
                 ]
+                Html.h1 [
+                    Bulma.button.button[
+                        prop.text "Hinzufügen"
+                        prop.style []   
+                        prop.onClick (fun _ -> (
+                            {Aufgaben = "duschen"; Erledigt = "ja"} :: table |>settable 
+                        ))
+                    ]
+                ]                               
             ]
+        ]
             
         
 
