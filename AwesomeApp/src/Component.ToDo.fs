@@ -67,8 +67,6 @@ module Bestandteile = //Recordtype mit zwei Boxen
             ]
         ]
 
-// let (localStorage :Komponenten List), setlocalstorage = React.useState (Recordtypeliste)
-//     localStorage.setItem ("Aufgaben"; "Erledigt")
 
       
         
