@@ -2,7 +2,7 @@ namespace Components
 open Feliz 
 open Feliz.Bulma
 
-module Bestandteile = //Recordtype mit zwei Boxen 
+module Bestandteile = //Recordtype mit zwei Feldern
 
     type Komponenten = {
         Aufgaben: string
@@ -14,10 +14,11 @@ module Bestandteile = //Recordtype mit zwei Boxen
         static member ToDoListe () = 
             
             let Recordtypeliste = [
-                {Aufgaben =  "HALLO"; Erledigt = "HUHU"} //initialwerte die für den Localstroage verändert werden müssen 
-                // let Komponentenls = JSON.parse (Komponenten)
-                //     localStorage.setItem ("Komponenten"; Komponentenls)
+                {Aufgaben =  "HALLO"; Erledigt = "HUHU"} //initialwerte die für den Localstroage verändert werden müssen  
             ]
+            // let localStorage (key :string) (info : string) =
+            //     Browser.WebStorage.localStorage.setItem (key; info)
+            
             let (table: Komponenten list), settable = React.useState (Recordtypeliste)
             Html.div [
                 prop.className "space-children"
