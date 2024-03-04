@@ -14,8 +14,9 @@ module Bestandteile = //Recordtype mit zwei Boxen
         static member ToDoListe () = 
             
             let Recordtypeliste = [
-                 {Aufgaben =  "HALLO"; Erledigt = "HUHU"}
-                 {Aufgaben =  "HIHI"; Erledigt = "HAHA"}   
+                {Aufgaben =  "HALLO"; Erledigt = "HUHU"} //initialwerte die für den Localstroage verändert werden müssen 
+                // let Komponentenls = JSON.parse (Komponenten)
+                //     localStorage.setItem ("Komponenten"; Komponentenls)
             ]
             let (table: Komponenten list), settable = React.useState (Recordtypeliste)
             Html.div [
