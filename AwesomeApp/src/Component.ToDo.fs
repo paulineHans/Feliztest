@@ -57,15 +57,13 @@ module Bestandteile = //Recordtype mit zwei Boxen
                             ]
                     ]
                 ]
-               
                 Bulma.button.button[
                     prop.text "Hinzufügen"
                     prop.style []   
                     prop.onClick (fun _ -> (
                         {Aufgaben = "duschen"; Erledigt = "ja"} :: table |>settable 
                     ))
-                ]
-                                               
+                ]                               
             ]
         ]
 
