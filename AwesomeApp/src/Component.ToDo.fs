@@ -56,18 +56,22 @@ module Bestandteile = //Recordtype mit zwei Boxen
                             ]
                     ]
                 ]
-                Html.h1 [
-                    Bulma.button.button[
-                        prop.text "Hinzufügen"
-                        prop.style []   
-                        prop.onClick (fun _ -> (
-                            {Aufgaben = "duschen"; Erledigt = "ja"} :: table |>settable 
-                        ))
-                    ]
-                ]                               
+               
+                Bulma.button.button[
+                    prop.text "Hinzufügen"
+                    prop.style []   
+                    prop.onClick (fun _ -> (
+                        {Aufgaben = "duschen"; Erledigt = "ja"} :: table |>settable 
+                    ))
+                ]
+                                               
             ]
         ]
-            
+
+// let (localStorage :Komponenten List), setlocalstorage = React.useState (Recordtypeliste)
+//     localStorage.setItem ("Aufgaben"; "Erledigt")
+
+      
         
 
     
