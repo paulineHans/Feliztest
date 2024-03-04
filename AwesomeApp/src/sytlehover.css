@@ -2,9 +2,11 @@
 
 
 .space-children > :not(:last-child) {
+    width: fit-content;
     display: flex;
     flex-direction: column;
     align-items: center;
+    
 }
 .space-children > * {
     margin-top: 20px;
