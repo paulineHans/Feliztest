@@ -10,31 +10,30 @@ module Bestandteile = //Recordtype mit zwei Feldern
         Aufgaben: string
         Erledigt: string  
     }
-
+    let localStoragekey = "TODO"
     type ToDo = 
         [<ReactComponent>]
         static member ToDoListe () = 
-            
-            // let Recordtypeliste = [
-            //     {Aufgaben =  "Welche Aufgabe musst du heute erledigen?"; Erledigt = "Yay! du hast diese Aufgabe erledigt"}  
-            // ]
 
-            let blub = Browser.WebStorage.localStorage.getItem ("Heutige Aufgabe") //Daten aus LocalStorage werden abgerufen
-            let backfromString = Json.tryParseAs<Komponenten list> (blub) //String back to Recordtypeliste
-            let fallback =
-                match backfromString with
-                | Result.Ok l -> printfn "ok"; l
-                | Result.Error e -> printfn "not ok"; []
+            let backfromString () = 
+                let JSONString = Browser.WebStorage.localStorage.getItem (localStoragekey)
+                Browser.Dom.console.log JSONString
+                Json.parseAs<Komponenten list> ( JSONString)
+                
+            let Recordtypeliste =  
+                //[{Aufgaben =  "Welche Aufgabe musst du heute erledigen?"; Erledigt = "Yay! du hast diese Aufgabe erledigt"} ]
+                backfromString () 
             
-            let (input, setinput) = React.useState ("")    
-            let (table: Komponenten list), settable = React.useState (fallback)
-            Browser.Dom.console.log (backfromString)
             
-            // Wert wird im LocalStorage unter dem Schlüssel "c" abgerufen und in der 
-            //Variable blub gespeichert. Danach wird versucht, den in blub gespeicherten JSON-String
-            //in Komponenten list zurückzuschreiben. Das Resultat wird in backfromString gespeicher
-            //Mit dem Pattern matching wird überprüft ob es geklappt hat. 
+            let (input, setinput) = React.useState ("") 
 
+            let setLocalStorange (data: Komponenten list) = 
+                let JSONString = Json.stringify data
+                Browser.WebStorage.localStorage.setItem (  localStoragekey, JSONString)
+            
+            
+            let (table: Komponenten list), settable = React.useState (Recordtypeliste)
+            
             Html.div [
                 prop.className "space-children"
                 prop.children [
@@ -45,11 +44,7 @@ module Bestandteile = //Recordtype mit zwei Feldern
 
                         let listlength = List.length table
                         let newlist = List.take (listlength - 1) table |> settable; //Funktion die das letzte Element aus ToDo löscht 
-                        newlist
-
-                        // Browser.Dom.console.log (blub)
-                        // Browser.WebStorage.localStorage.setItem("Heutige Aufgabe","Awesome eine Aufgabe weniger!")
-                        // Browser.WebStorage.sessionStorage.setItem ("Heutige Aufgabe","Awesome eine Aufgabe weniger!")                    
+                        newlist                  
                         ) 
                 ]
 
@@ -66,12 +61,11 @@ module Bestandteile = //Recordtype mit zwei Feldern
                                 Html.td [
                                     Bulma.control.div[
                                         Bulma.input.text [
-                                            prop.placeholder "Aufgabe hinzufügen"
+                                          //  prop.text input
+                                            prop.placeholder element.Aufgaben
+                                            //prop.text element.Aufgaben
                                             prop.onChange (fun (x: string) -> 
-                                            setinput x
-                                            Browser.WebStorage.localStorage.setItem("Heutige Aufgabe",input) 
-                                            )
-
+                                                setinput (x))
                                         ]
                                     ]
                                 ]
@@ -85,20 +79,23 @@ module Bestandteile = //Recordtype mit zwei Feldern
                             ]
                     ]
                 ]
+                
                 Bulma.button.button[
                     prop.text "Hinzufügen"   
                     prop.onClick (fun _ -> (
-                        {Aufgaben = blub; Erledigt = "Wuhu eine Aufgabe weniger"} :: table |>settable;
-                        // let JSONString  = Json.stringify table
-                        // Browser.Dom.console.log (JSONString) 
-                        // Browser.WebStorage.localStorage.setItem("Heutige Aufgabe",JSONString)                       
+                        {Aufgaben = input; Erledigt = "Wuhu eine Aufgabe weniger"} :: table |>settable;                       
                     ))
-                ] 
+                ]
                 Html.button [
-                    prop.text "Speicher"
+                    prop.text "Speichern"
+                    prop.onClick (fun _ ->
+                    setLocalStorange table)
+                ]
+                Html.button [
+                    prop.text "Speicher Abrufen"
                     color.isDanger
                     prop.onClick (fun _ -> (
-                        {Aufgaben = blub ; Erledigt = "Wuhu eine Aufgabe weniger"} :: table |>settable
+                        backfromString () |> settable
                     ))    
                 ]                              
             ]
