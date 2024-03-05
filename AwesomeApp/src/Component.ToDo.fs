@@ -15,20 +15,26 @@ module Bestandteile = //Recordtype mit zwei Feldern
         [<ReactComponent>]
         static member ToDoListe () = 
             
-            let Recordtypeliste = [
-                {Aufgaben =  "Welche Aufgabe musst du heute erledigen?"; Erledigt = "Yay! du hast diese Aufgabe erledigt"}  
-            ]
+            // let Recordtypeliste = [
+            //     {Aufgaben =  "Welche Aufgabe musst du heute erledigen?"; Erledigt = "Yay! du hast diese Aufgabe erledigt"}  
+            // ]
 
-            let blub = Browser.WebStorage.localStorage.getItem ("c") //Daten aus LocalStorage werden abgerufen
+            let blub = Browser.WebStorage.localStorage.getItem ("Heutige Aufgabe") //Daten aus LocalStorage werden abgerufen
             let backfromString = Json.tryParseAs<Komponenten list> (blub) //String back to Recordtypeliste
             let fallback =
                 match backfromString with
                 | Result.Ok l -> printfn "ok"; l
                 | Result.Error e -> printfn "not ok"; []
             
+            let (input, setinput) = React.useState ("")    
             let (table: Komponenten list), settable = React.useState (fallback)
             Browser.Dom.console.log (backfromString)
             
+            // Wert wird im LocalStorage unter dem Schlüssel "c" abgerufen und in der 
+            //Variable blub gespeichert. Danach wird versucht, den in blub gespeicherten JSON-String
+            //in Komponenten list zurückzuschreiben. Das Resultat wird in backfromString gespeicher
+            //Mit dem Pattern matching wird überprüft ob es geklappt hat. 
+
             Html.div [
                 prop.className "space-children"
                 prop.children [
@@ -41,11 +47,12 @@ module Bestandteile = //Recordtype mit zwei Feldern
                         let newlist = List.take (listlength - 1) table |> settable; //Funktion die das letzte Element aus ToDo löscht 
                         newlist
 
-                        Browser.Dom.console.log (blub)
-                        Browser.WebStorage.localStorage.setItem("Heutige Aufgabe","Awesome eine Aufgabe weniger!")
-                        Browser.WebStorage.sessionStorage.setItem ("Heutige Aufgabe","Awesome eine Aufgabe weniger!")                    
-                        )
+                        // Browser.Dom.console.log (blub)
+                        // Browser.WebStorage.localStorage.setItem("Heutige Aufgabe","Awesome eine Aufgabe weniger!")
+                        // Browser.WebStorage.sessionStorage.setItem ("Heutige Aufgabe","Awesome eine Aufgabe weniger!")                    
+                        ) 
                 ]
+
                 Bulma.table [ 
                     Html.thead [
                         Html.tr [
@@ -60,6 +67,10 @@ module Bestandteile = //Recordtype mit zwei Feldern
                                     Bulma.control.div[
                                         Bulma.input.text [
                                             prop.placeholder "Aufgabe hinzufügen"
+                                            prop.onChange (fun (x: string) -> 
+                                            setinput x
+                                            Browser.WebStorage.localStorage.setItem("Heutige Aufgabe",input) 
+                                            )
 
                                         ]
                                     ]
@@ -75,17 +86,22 @@ module Bestandteile = //Recordtype mit zwei Feldern
                     ]
                 ]
                 Bulma.button.button[
-                    prop.text "Hinzufügen"
-                    prop.style []   
+                    prop.text "Hinzufügen"   
                     prop.onClick (fun _ -> (
-                        {Aufgaben = "Welche Aufgabe musst du erledigen?"; Erledigt = "Wuhu eine Aufgabe weniger"} :: table |>settable;
-                        //Recordtypelist -> JSONString
-                        let JSONString  = Json.stringify table
-                        Browser.Dom.console.log (JSONString) 
-                        Browser.Dom.console.log (backfromString)
-                        Browser.WebStorage.localStorage.setItem("Heutige Aufgabe","Welche Aufgabe machst du heute noch :)")
-                        Browser.WebStorage.sessionStorage.setItem ("Heutige Aufgabe" ,"Welche Aufgabe machst du heute noch :)")                       
+                        {Aufgaben = blub; Erledigt = "Wuhu eine Aufgabe weniger"} :: table |>settable;
+                        // let JSONString  = Json.stringify table
+                        // Browser.Dom.console.log (JSONString) 
+                        // Browser.WebStorage.localStorage.setItem("Heutige Aufgabe",JSONString)                       
                     ))
-                ]                               
+                ] 
+                Html.button [
+                    prop.text "Speicher"
+                    color.isDanger
+                    prop.onClick (fun _ -> (
+                        {Aufgaben = blub ; Erledigt = "Wuhu eine Aufgabe weniger"} :: table |>settable
+                    ))    
+                ]                              
             ]
         ]
+
+// ZIEL: ich möchte das wenn ich auf Speicher klicke das er mir das zurückgibt was vorher im InputFeld stand aber wie erkennt er das ich da was reingeschrieben habe...............
