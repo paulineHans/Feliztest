@@ -19,8 +19,8 @@ module Bestandteile = //Recordtype mit zwei Feldern
                 {Aufgaben =  "Welche Aufgabe musst du heute erledigen?"; Erledigt = "Yay! du hast diese Aufgabe erledigt"}  
             ]
 
-            let Recordtypeliste= Browser.WebStorage.localStorage.getItem ("Heutige Aufgabe") //Daten aus LocalStorage werden abgerufen
-            let backfromString = Json.tryParseAs<Komponenten list> (Recordtypeliste) //String back to Recordtypeliste
+            let Speicherungen= Browser.WebStorage.localStorage.getItem ("Heutige Aufgabe") //Daten aus LocalStorage werden abgerufen
+            let backfromString = Json.tryParseAs<Komponenten list> (Speicherungen) //String back to Recordtypeliste
             let fallback =
                 match backfromString with
                 | Result.Ok l -> printfn "ok"; l
@@ -41,7 +41,7 @@ module Bestandteile = //Recordtype mit zwei Feldern
                         let newlist = List.take (listlength - 1) table |> settable; //Funktion die das letzte Element aus ToDo löscht 
                         newlist
 
-                        Browser.Dom.console.log (Recordtypeliste)
+                        Browser.Dom.console.log (Speicherungen)
                         Browser.WebStorage.localStorage.setItem("Heutige Aufgabe","Awesome eine Aufgabe weniger!")
                         Browser.WebStorage.sessionStorage.setItem ("Heutige Aufgabe","Awesome eine Aufgabe weniger!")                    
                         )
