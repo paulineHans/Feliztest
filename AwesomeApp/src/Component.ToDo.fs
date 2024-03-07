@@ -11,29 +11,39 @@ module Bestandteile = //Recordtype mit zwei Feldern
         Erledigt: string  
     }
     let localStoragekey = "TODO"
+    
     type ToDo = 
         [<ReactComponent>]
         static member ToDoListe () = 
 
+
+// backfromString dient dazu JSON.string Daten aus dem localstroage zu lesen und in der Console auszugeben und anschließend zu deserialisieren  
             let backfromString () = 
                 let JSONString = Browser.WebStorage.localStorage.getItem (localStoragekey)
                 Browser.Dom.console.log JSONString
                 Json.parseAs<Komponenten list> ( JSONString)
                 
+            
+//Die Funktion backfromString lädt JSON-Daten aus dem Local Storage,
+//loggt sie in der Browser-Konsole und deserialisiert sie in eine Liste von Records, 
+//wobei das Ergebnis der Deserialisierung in der Variable Recordtypeliste gespeichert wird.    
             let Recordtypeliste =  
                 //[{Aufgaben =  "Welche Aufgabe musst du heute erledigen?"; Erledigt = "Yay! du hast diese Aufgabe erledigt"} ]
                 backfromString () 
-            
-            
-            let (input, setinput) = React.useState ("") 
+          
+//Die Variable input enthält den aktuellen Wert dieses Zustands, 
+//während setinput eine Funktion ist, die verwendet wird, um diesen Wert zu aktualisieren 
 
             let setLocalStorange (data: Komponenten list) = 
                 let JSONString = Json.stringify data
                 Browser.WebStorage.localStorage.setItem (  localStoragekey, JSONString)
             
             
+           
+            let (input, setinput) = React.useState("")
+
+
             let (table: Komponenten list), settable = React.useState (Recordtypeliste)
-            
             Html.div [
                 prop.className "space-children"
                 prop.children [
@@ -41,13 +51,11 @@ module Bestandteile = //Recordtype mit zwei Feldern
                     prop.text "Löschen"
                     prop.className "Löschenbutton"
                     prop.onClick (fun _ ->
-
                         let listlength = List.length table
                         let newlist = List.take (listlength - 1) table |> settable; //Funktion die das letzte Element aus ToDo löscht 
                         newlist                  
                         ) 
                 ]
-
                 Bulma.table [ 
                     Html.thead [
                         Html.tr [
@@ -56,16 +64,22 @@ module Bestandteile = //Recordtype mit zwei Feldern
                         ]
                     ]
                     Html.tbody [
-                        for element in table do 
+                        for i in [0 .. (table.Length - 1)] do //jedes Element der Liste
                             Html.tr [
                                 Html.td [
                                     Bulma.control.div[
                                         Bulma.input.text [
-                                          //  prop.text input
-                                            prop.placeholder element.Aufgaben
-                                            //prop.text element.Aufgaben
-                                            prop.onChange (fun (x: string) -> 
-                                                setinput (x))
+                                            prop.placeholder "Aufgabe Hinzufügen"
+                                            prop.onChange (fun (x: string) -> // reagiert auf Veränderungen x ist der aktuelle Wert des Eingabe 
+                                                table 
+                                                |> List.mapi (fun idx item -> 
+                                                    if idx = i then 
+                                                        [item; {Aufgaben = localStoragekey; Erledigt = ""}]
+                                                    else 
+                                                        [item] 
+                                                )
+                                                |> settable 
+                                                )
                                         ]
                                     ]
                                 ]
@@ -76,10 +90,9 @@ module Bestandteile = //Recordtype mit zwei Feldern
                                         ]
                                     ]
                                 ] 
-                            ]
+                        ]
                     ]
                 ]
-                
                 Bulma.button.button[
                     prop.text "Hinzufügen"   
                     prop.onClick (fun _ -> (
@@ -100,5 +113,3 @@ module Bestandteile = //Recordtype mit zwei Feldern
                 ]                              
             ]
         ]
-
-// ZIEL: ich möchte das wenn ich auf Speicher klicke das er mir das zurückgibt was vorher im InputFeld stand aber wie erkennt er das ich da was reingeschrieben habe...............
