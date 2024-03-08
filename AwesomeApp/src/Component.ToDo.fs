@@ -8,7 +8,7 @@ module Bestandteile = //Recordtype mit zwei Feldern
 
     type Komponenten = {
         Aufgaben: string
-        Erledigt: string  
+        Checkbox: bool   
     }
     let localStoragekey = "TODO"
     
@@ -25,7 +25,7 @@ module Bestandteile = //Recordtype mit zwei Feldern
         Browser.Dom.console.log (isNull JSONString)
         if isNull JSONString then 
             [
-                {Aufgaben = ""; Erledigt = "shdfsd"}
+                {Aufgaben = ""; Checkbox = false}
             ] 
         else 
             Browser.Dom.console.log JSONString
@@ -35,7 +35,7 @@ module Bestandteile = //Recordtype mit zwei Feldern
         table 
         |> List.mapi (fun (idx: int) (item: Komponenten) -> 
             if idx = i then 
-                let updatetString: Komponenten = {Aufgaben = x; Erledigt = "Yay! du hast diese Aufgabe erledigt"}
+                let updatetString: Komponenten = {Aufgaben = x; Checkbox = false}
                 updatetString
             else 
                 item
@@ -89,15 +89,6 @@ type ToDo =
                                         prop.valueOrDefault element.Aufgaben
                                         prop.placeholder "Aufgabe Hinzufügen"
                                         prop.onChange (fun (x: string) -> // reagiert auf Veränderungen x ist der aktuelle Wert des Eingabe 
-                                            let updateListElement (table: Komponenten list) (i : int) (x : string) : Komponenten list =
-                                                table 
-                                                |> List.mapi (fun (idx: int) (item: Komponenten) -> 
-                                                    if idx = i then 
-                                                        let updatetString: Komponenten = {Aufgaben = x; Erledigt = "Yay! du hast diese Aufgabe erledigt"}
-                                                        updatetString
-                                                    else 
-                                                        item
-                                                )
                                             let nextTable = updateListElement table i x 
                                             nextTable |> settable 
                                             nextTable |> setToDoLocalStorange 
@@ -119,7 +110,7 @@ type ToDo =
             Bulma.button.button [
                 prop.text "Hinzufügen"   
                 prop.onClick (fun _ -> (
-                    {Aufgaben = input; Erledigt = "Wuhu eine Aufgabe weniger"} :: table |>settable;                       
+                    {Aufgaben = input; Checkbox = false} :: table |>settable;                       
                 ))
             ]
             Html.button [
