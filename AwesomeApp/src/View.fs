@@ -17,7 +17,7 @@ type View =
                 |Page.Counter -> 
                     Components.Components.Counter ()
                 |Page.LandingPage -> Html.div "In a galaxy far far away"
-                |Page.Todo -> Components.Bestandteile.ToDo.ToDoListe ()
+                |Page.Todo -> Components.ToDo.ToDoListe ()
             
             ]
         ]
