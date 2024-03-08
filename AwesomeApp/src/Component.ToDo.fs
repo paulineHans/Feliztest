@@ -25,7 +25,7 @@ module Bestandteile = //Recordtype mit zwei Feldern
         Browser.Dom.console.log (isNull JSONString)
         if isNull JSONString then 
             [
-                {Aufgaben = ""; Checkbox = false}
+                {Aufgaben = ""; Checkbox = true }
             ] 
         else 
             Browser.Dom.console.log JSONString
@@ -101,6 +101,31 @@ type ToDo =
                                 Bulma.control.div [
                                     Bulma.input.checkbox [
                                         prop.placeholder "Erledigt?"
+                                        prop.text element.Aufgaben
+                                        if element.Checkbox = true then 
+                                            prop.style [
+                                                style.textDecorationLine.lineThrough
+                                                style.color.gray
+                                            ]
+                                    ]
+                                ]
+                            ]
+                            Html.td [
+                                Bulma.control.div [
+                                    Bulma.input.checkbox [
+                                        prop.onCheckedChange (fun (isChecked:bool) ->
+                                            log isChecked
+                                            table 
+                                            |> List.mapi (fun idx item ->
+                                                if idx = i then 
+                                                    log item 
+                                                    {item with Checkbox=isChecked}
+                                                    else item 
+                                            )
+                                            |> settable
+                                        )
+                                        prop.isChecked
+                                            element.Checkbox
                                     ]
                                 ]
                             ] 
