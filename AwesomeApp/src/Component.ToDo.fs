@@ -5,18 +5,18 @@ open Fable.SimpleJson
 
 module Bestandteile = 
 
-    type Komponenten = {
+    type Komponenten = { //Recordtype with two fields A. Aufgaben & Checkbox 
         Aufgaben: string
         Checkbox: bool   
     }
 
-    let localStoragekey = "TODO"
+    let localStoragekey = "TODO" //LocalStorage Key to store and retrieve data under this key
     
-    let setToDoLocalStorange (data: Komponenten list) = 
+    let setToDoLocalStorange (data: Komponenten list) =  // saves the list of tasks in the local storage as a JSON string
         let JSONString = Json.stringify data
         Browser.WebStorage.localStorage.setItem (localStoragekey, JSONString)
 
-    let getToDoLocalStorage () = 
+    let getToDoLocalStorage () = //Retrieves the data in LocalStorage and returns it; if no data is found, a new list is created
         let JSONString = Browser.WebStorage.localStorage.getItem (localStoragekey)
         Browser.Dom.console.log (isNull JSONString)
         let result = 
@@ -35,11 +35,10 @@ module Bestandteile =
                         {Aufgaben = ""; Checkbox = true}
                     ]
         result 
-    let updateListElement (table: Komponenten list) (i : int) (x : string) : Komponenten list = 
+    let updateListElement (table: Komponenten list) (i : int) (x : string) : Komponenten list = //Updates an element in the input field using index i
         table 
         |> List.mapi (fun (idx: int) (item: Komponenten) -> 
             if idx = i then
-                //let Komponente1 = {item with Aufgaben = x}
                 let test =   {Aufgaben = x; Checkbox =item.Checkbox} 
                 test
             else 
@@ -50,7 +49,7 @@ open Bestandteile
 
 type ToDo = 
     [<ReactComponent>]
-    static member ToDoListe () =     
+    static member ToDoListe () = //Defines a React component for displaying and editing the to-do list 
         let Recordtypeliste =  
             getToDoLocalStorage () 
         
@@ -66,7 +65,7 @@ type ToDo =
                 prop.className "Löschenbutton"
                 prop.onClick (fun _ ->
                     let listlength = List.length table
-                    let newlist = List.take (listlength - 1) table |> settable; //Funktion die das letzte Element aus ToDo löscht 
+                    let newlist = List.take (listlength - 1) table |> settable; //Function that deletes the last element from ToDo 
                     newlist                  
                     ) 
             ]
@@ -78,7 +77,7 @@ type ToDo =
                     ]
                 ]
                 Html.tbody [
-                    for i in [0 .. (table.Length - 1)] do //jedes Element der Liste
+                    for i in [0 .. (table.Length - 1)] do //every element of the list
                         let element = table |> List.item i
                         Html.tr [
                             Html.td [
@@ -86,11 +85,10 @@ type ToDo =
                                     Bulma.input.text [
                                         prop.valueOrDefault element.Aufgaben
                                         prop.placeholder "Aufgabe Hinzufügen"
-                                        prop.onChange (fun (x: string) -> // reagiert auf Veränderungen x ist der aktuelle Wert des Eingabe 
+                                        prop.onChange (fun (x: string) -> // reacts to changes x is the current value of the input 
                                             let nextTable = updateListElement table i x 
                                             nextTable |> settable 
-                                            nextTable |> setToDoLocalStorange 
-                                            //backfromString () |> settable    
+                                            nextTable |> setToDoLocalStorange     
                                         )
                                         if element.Checkbox = true then 
                                             prop.style [
