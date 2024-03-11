@@ -23,20 +23,34 @@ module Bestandteile = //Recordtype mit zwei Feldern
     let getToDoLocalStorage () = 
         let JSONString = Browser.WebStorage.localStorage.getItem (localStoragekey)
         Browser.Dom.console.log (isNull JSONString)
-        if isNull JSONString then 
-            [
-                {Aufgaben = ""; Checkbox = true }
-            ] 
-        else 
-            Browser.Dom.console.log JSONString
-            Json.parseAs<Komponenten list> ( JSONString)
+        let result = 
+            if isNull JSONString then 
+                [
+                    {Aufgaben = ""; Checkbox = true}
+                ] 
+            else 
+                Browser.Dom.console.log JSONString
+                match Json.tryParseAs<Komponenten list> ( JSONString) with 
+                | Ok (parsedData) -> 
+                    //printfn "Parseddata: %A" parsedData
+                    parsedData
+                | Error _ -> 
+                    printfn "couldnt parse"
+                    [
+                        {Aufgaben = ""; Checkbox = true}
+                    ]
+        //sprintfn "result %A" result
+        result
+            
+                
     
     let updateListElement (table: Komponenten list) (i : int) (x : string) : Komponenten list = 
         table 
         |> List.mapi (fun (idx: int) (item: Komponenten) -> 
-            if idx = i then 
-                let updatetString: Komponenten = {Aufgaben = x; Checkbox = false}
-                updatetString
+            if idx = i then
+                //let Komponente1 = {item with Aufgaben = x}
+                let test =   {Aufgaben = x; Checkbox =item.Checkbox} 
+                test
             else 
                 item
         )
@@ -93,15 +107,7 @@ type ToDo =
                                             nextTable |> settable 
                                             nextTable |> setToDoLocalStorange 
                                             //backfromString () |> settable    
-                                            )
-                                    ]
-                                ]
-                            ]
-                            Html.td [
-                                Bulma.control.div [
-                                    Bulma.input.checkbox [
-                                        prop.placeholder "Erledigt?"
-                                        prop.text element.Aufgaben
+                                        )
                                         if element.Checkbox = true then 
                                             prop.style [
                                                 style.textDecorationLine.lineThrough
