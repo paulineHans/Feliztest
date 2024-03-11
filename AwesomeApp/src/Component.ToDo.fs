@@ -3,7 +3,8 @@ open Feliz
 open Feliz.Bulma
 open Fable.SimpleJson
 
-module Bestandteile = //Recordtype mit zwei Feldern
+module Bestandteile = 
+
     type Komponenten = {
         Aufgaben: string
         Checkbox: bool   
